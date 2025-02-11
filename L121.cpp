@@ -1,32 +1,28 @@
 ﻿#include <iostream>
+#include <cstdint>
 
-class Numbers
+class RGBA
 {
-public:
-    int num1;
-    int num2;
+private:
+    std::uint8_t m_red;
+    std::uint8_t m_green;
+    std::uint8_t m_blue;
+    std::uint8_t m_alpha;
 
-    void set(int first, int second)
-    {
-        num1 = first;
-        num2 = second;
+public:
+    RGBA(std::uint8_t red = 0, std::uint8_t green = 0, std::uint8_t blue = 0, std::uint8_t alpha = 255)
+        : m_red(red), m_green(green), m_blue(blue), m_alpha(alpha) {
     }
 
-    void print()
-    {
-        std::cout << num1 << ", " << num2;
+    void print() const {
+        std::cout << "red =" << static_cast<int>(m_red) << " green =" << static_cast<int>(m_green) << " blue =" << static_cast<int>(m_blue) << " alpha =" << static_cast<int>(m_alpha) << '\n';
     }
 };
 
 int main()
 {
-    Numbers n1;
-    n1.set(1, 2);
-    Numbers n2{ 3, 4 };
-    n1.print();
-    n2.print();
+    RGBA color(0, 0, 169);
+    color.print();
+
     return 0;
 }
-
-//Завдання 2
-//Відповідь : Клас Numbers містить як змінні, так і методи, тому ми повинні використовувати клас.Ми не повинні використовувати структури з об’єктами, які мають методи
