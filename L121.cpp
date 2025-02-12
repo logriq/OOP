@@ -1,28 +1,48 @@
-﻿#include <iostream>
-#include <cstdint>
+﻿#include <iostream> 
+#include <string>
 
-class RGBA
+class Thing
 {
 private:
-    std::uint8_t m_red;
-    std::uint8_t m_green;
-    std::uint8_t m_blue;
-    std::uint8_t m_alpha;
+	std::string m_color = "blue";
+	double m_radius = 20.0;
 
 public:
-    RGBA(std::uint8_t red = 0, std::uint8_t green = 0, std::uint8_t blue = 0, std::uint8_t alpha = 255)
-        : m_red(red), m_green(green), m_blue(blue), m_alpha(alpha) {
-    }
+	Thing()
+	{
+	}
 
-    void print() const {
-        std::cout << "red =" << static_cast<int>(m_red) << " green =" << static_cast<int>(m_green) << " blue =" << static_cast<int>(m_blue) << " alpha =" << static_cast<int>(m_alpha) << '\n';
-    }
+	Thing(const std::string& color) :
+		m_color(color)
+	{
+	}
+
+	Thing(double radius) :
+		m_radius(radius)
+	{
+	}
+
+	Thing(const std::string& color, double radius) :
+		m_color(color), m_radius(radius)
+	{
+	}
+
+	void print()
+	{
+		std::cout << "color: " << m_color << " and radius: " << m_radius << '\n';
+	}
 };
 
 int main()
 {
-    RGBA color(0, 0, 169);
-    color.print();
+	Thing defl;
+	defl.print();
+	Thing red("red");
+	red.print();
+	Thing thirty(30.0);
+	thirty.print();
+	Thing redThirty("red", 30.0);
+	redThirty.print();
 
-    return 0;
+	return 0;
 }
